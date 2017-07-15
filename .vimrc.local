@@ -1,0 +1,39 @@
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+syntax on
+colorscheme monokai
+set t_Co=256  " vim-monokai now only support 256 colours in terminal.
+
+" mapping leader keys
+let mapleader = ','
+let maplocalleader = '\\'
+
+" map my ~/.vimrc.local file
+let $MYVIMRCLOCAL = '~/.vimrc.local'
+
+" shortcut to edit and source this file
+nnoremap <leader>ev :vsplit $MYVIMRCLOCAL<cr>
+nnoremap <leader>sv :source $MYVIMRCLOCAL<cr>
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+inoremap jk <esc>
+
+" Indent
+set tabstop=2       " The width of a TAB is set to 4.
+                    " Still it is a \t. It is just that
+                    " Vim will interpret it to be having
+                    " a width of 4.
+set shiftwidth=2    " Indents will have a width of 4
+set softtabstop=2   " Sets the number of columns for a TAB
+set expandtab       " Expand TABs to spaces
+
+" ================ Custom Settings ========================
+" Window pane resizing
+nnoremap <silent> <Leader>[ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>] :exe "resize " . (winheight(0) * 2/3)<CR>
+
